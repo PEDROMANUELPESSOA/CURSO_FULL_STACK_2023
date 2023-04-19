@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id='titulo-principal'>
+        <h1 class="cabecalho2" style="color: aqua;">Titulo principal</h1>
+        <p>algum texto</p>
+    </div>
+    <div class="pai2">
+        <h1>Lista de coisas</h1>
+        <ul>
+            <li>coisa 1</li>
+            <li>coisa 2</li>
+            <li>coisa 3</li>
+        </ul>
+    </div>
+
+    <div class="pai">
+        <h3>Meu texto h3</h3>
+    </div>
+
+    <script>
+console.log(document.getElementsByTagName('h1'));
+
+console.log(document.getElementsByTagName('li'));
+
+const li = document.getElementsByTagName('li');
+console.log(li);
+
+const principal = document.getElementById('titulo-principal');
+console.log(principal);
+
+const cabecalho = document.getElementsByClassName('cabecalho');
+console.log(cabecalho);
+
+const principal2 = document.getElementById('titulo-principal');
+console.log(principal2.innerHTML);
+
+const cabecalho3 = document.querySelector('.cabecalho2');
+console.log(cabecalho3.innerText);
+
+const cabecalho4 = document.querySelector('.cabecalho2');
+cabecalho4.innerText = 'Alterando';
+
+const el = document.createElement('p');
+el.innerText = 'fui criado';
+
+const pai = document.querySelector('.pai');
+
+const filho = document.querySelector('.pai h3');
+
+pai.insertBefore(el, filho);
+
+
+
+    </script>
+</body>
+</html>

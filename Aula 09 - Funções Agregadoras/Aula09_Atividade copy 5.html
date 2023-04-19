@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[JAVASCRIPT] Aula 08</title>
+    <meta charset="UTF-8">
+    <style>
+        .topo {
+            width: 550;
+            min-height: 90px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        .quadro {
+            width: 580px;
+            min-height: 20px;;
+            margin: auto;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .resultado {
+            width: 80%;
+            margin: auto;
+            border: 2px solid black;
+            text-align: left;
+        }
+       
+        .btn {
+            background-color: gray;
+            color: white;
+            width: 115px;
+            margin: 10px 5px;
+            width: auto;
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+    <div class="topo">
+        <p>
+        <h1>Aula 08 - Atividade</h1>
+        <h4>forEach, Map, Filter, Reduce</h4>
+        </p>
+    </div>
+    <div class="quadro">
+            <h4>Exercicio 4</h4>
+            <button id="btnReduce" class="btn">Reduce</button>
+            <ul class="resultado" id="resultadoReduce"></ul>
+            <br>
+    </div>
+    <br/>
+    
+    <script>
+
+        const vendas = [
+                        { nome: 'Geladeira', categoria: 'Eletrônico', preco: 2500, desconto: 0},
+                        { nome: 'Sofá', categoria: 'Móvel', preco: 900, desconto: 30}, // 30% de desconto
+                        { nome: 'Televisão', categoria: 'Eletrônico', preco: 3000, desconto: 10}, // 10% de desconto
+                        { nome: 'Playstation 5', categoria: 'Eletrônico', preco: 4100, desconto: 5}, 
+                        { nome: 'Cama Box', categoria: 'Móvel', preco: 1300, desconto: 15}, 
+                        { nome: 'Estante Rack', categoria: 'Móvel', preco: 600, desconto: 10},
+                    ]
+
+//*** Funcionalidade do botão Reduce ***
+document.getElementById('btnReduce').addEventListener('click', () => {
+            //Onde escrever o resultado do reduce
+            const resultadoReduce = document.getElementById('resultadoReduce');
+            resultadoReduce.innerHTML = '';
+            
+            /*
+            Diferente do map e do filter, reduce retorna um valor, sumarizado em uma variavel de acumulação
+            Este método pode ter até quatro parâmetros. No exemplo abaixo, usou-se somente 3
+            'valorAnterior' é o acumulador
+            'valorAtual' é o objeto da interação corrente, neste caso, um objeto 'fruta'
+            'valorInicial' define o valor inicial e o tipo de retorno (numérico)
+            */
+            let valorInicial = 0;
+            let vendas_sum = des.reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual.preco, valorInicial );
+            
+            resultadoReduce.innerHTML = vendas_sum;
+
+        });
+        
+    </script>
+</body>
+
+</html>

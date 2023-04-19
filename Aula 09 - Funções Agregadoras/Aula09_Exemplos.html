@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[JAVASCRIPT] Aula 08</title>
+    <meta charset="UTF-8">
+    <style>
+        .topo {
+            width: 550;
+            min-height: 90px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h4 {
+            margin: auto;
+            text-align: center;
+        }
+
+        .quadro {
+            width: 580px;
+            min-height: 20px;;
+            margin: auto;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .resultado {
+            width: 80%;
+            margin: auto;
+            border: 2px solid black;
+            text-align: left;
+        }
+       
+        .btn {
+            background-color: gray;
+            color: white;
+            width: 115px;
+            margin: 10px 5px;
+            width: auto;
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+    <div class="topo">
+        <p>
+        <h1>Aula 08 - Exemplos</h1>
+        <h4>forEach, Map, Filter, Reduce</h4>
+        </p>
+    </div>
+    <div class="quadro">
+            <h4>Teste da função forEach</h4>
+            <button id="btnForeach" class="btn">Foreach</button>
+            <br>
+    </div>
+    <br/>
+    <div class="quadro">
+        <h4>Teste da função Map</h4>
+        <button id="btnMap" class="btn">Map</button>
+        <ul class="resultado" id="resultadoMap"></ul>
+        <br>
+    </div>
+    <br/>
+    <div class="quadro">
+        <h4>Teste da função Filter</h4>
+        <h4>Obter frutas com até 4 letras</h4>
+        <button id="btnFilter" class="btn">Filter</button>
+        <ul class="resultado" id="resultadoFilter"></ul>
+        <br>
+    </div>
+    <br/>
+    <div class="quadro">
+        <h4>Teste da função Reduce</h4>
+        <button id="btnReduce" class="btn">Reduce</button>
+        <ul class="resultado" id="resultadoReduce"></ul>
+        <br>
+    </div>
+    <br/>
+    
+    <script>
+
+        //Array de teste
+        const frutas = [
+                        { nome: 'Manga', preco: 10},
+                        { nome: 'Maça', preco: 2},
+                        { nome: 'Banana', preco: 1},
+                        { nome: 'Uva', preco: 3},
+                        { nome: 'Laranja', preco: 4},
+                        { nome: 'Tamarindo', preco: 8},
+                        { nome: 'Pêra', preco: 12}
+                    ]
+
+
+        //*** Funcionalidade do botão Foreach ***
+        document.getElementById('btnForeach').addEventListener('click', () => {
+            /*
+            frutas é o array
+            fruta é a variável de interação
+            O foreach executará o laço uma vez para cada item do array
+            */
+            frutas.forEach(fruta => {
+                alert(fruta.nome);
+            })
+
+            /*Para comparação, aqui temos um laço 'for' que teria o mesmo efeito
+            
+            for (let i = 0; i < frutas.length; i++){
+              alert(frutas[i].nome);
+            }
+            
+            */
+        });
+
+
+        //*** Funcionalidade do botão Map ***
+        document.getElementById('btnMap').addEventListener('click', () => {
+            //Onde escrever o resultado do map
+            let resultadoMap = document.getElementById('resultadoMap');
+            resultadoMap.innerHTML = '';
+            
+            /*
+            Perceba que foi criado um novo array chamado 'frutas_list'
+            Este array vai receber o resultado do map
+            O map executará uma vez para cada item, realizará a mudança e retornará o valor, item a item
+            */
+            const frutas_list = frutas.map(fruta => {
+                return '<li>' + fruta.nome + '</li>';
+            })
+
+            //A função join() concatena o array em formato string
+            resultadoMap.innerHTML = frutas_list.join('');
+
+        });
+
+
+        //*** Funcionalidade do botão Filter ***
+        document.getElementById('btnFilter').addEventListener('click', () => {
+            //Onde escrever o resultado do filter
+            let resultadoFilter = document.getElementById('resultadoFilter');
+            resultadoFilter.innerHTML = '';
+            
+            /*
+            Assim como map, filter retorna um array, nesse caso 'frutas_filtered'
+            O filter executará uma vez para cada item, fará o teste lógico e poderá incluir ou não o valor no resultado
+            */
+            const frutas_filtered = frutas.filter(fruta => {
+                //Perceba que neste ponto fazemos um teste lógico.
+                //Se true, o valor é adicionado no resultado, se falso é excluído do resultado
+                //O array original permanece inalterado
+                return fruta.nome.length <= 4;
+            })
+
+            //A função join() concatena o array em formato string
+            resultadoFilter.innerHTML = frutas_filtered.map(fruta => {
+                                                            return '<li>' + fruta.nome + '</li>';
+                                                        }).join('');
+
+        });
+
+
+        //*** Funcionalidade do botão Reduce ***
+        document.getElementById('btnReduce').addEventListener('click', () => {
+            //Onde escrever o resultado do reduce
+            const resultadoReduce = document.getElementById('resultadoReduce');
+            resultadoReduce.innerHTML = '';
+            
+            /*
+            Diferente do map e do filter, reduce retorna um valor, sumarizado em uma variavel de acumulação
+            Este método pode ter até quatro parâmetros. No exemplo abaixo, usou-se somente 3
+            'valorAnterior' é o acumulador
+            'valorAtual' é o objeto da interação corrente, neste caso, um objeto 'fruta'
+            'valorInicial' define o valor inicial e o tipo de retorno (numérico)
+            */
+            let valorInicial = 0;
+            let frutas_sum = frutas.reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual.preco, valorInicial );
+            
+            resultadoReduce.innerHTML = frutas_sum;
+
+        });
+        
+    </script>
+</body>
+
+</html>

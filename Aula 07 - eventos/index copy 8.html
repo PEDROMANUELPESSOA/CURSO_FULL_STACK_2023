@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+   
+</head>
+<body>
+    <h1 id='obj'>0</h1>
+    <button id="btn1">+1</button>
+    <button id="btn2">-1</button>
+
+    <script>
+     const botao1 = document.querySelector('#btn1');
+     const botao2 = document.querySelector('#btn2');
+
+
+     
+
+     botao1.addEventListener('click', click1);
+
+     botao2.addEventListener('click', click2);
+
+
+
+
+     
+     function click1(){
+        document.querySelector('#obj').innerHTML += '+1';
+     }
+     function click2(){
+        document.querySelector('#obj').innerHTML += '-1';
+     }
+    </script>
+</body>
+</html>
